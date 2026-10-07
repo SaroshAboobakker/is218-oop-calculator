@@ -43,3 +43,9 @@ def test_calculator_history_multiple():
     calculator.calculate(subtraction)
 
     assert calculator.get_history() == [addition, subtraction]
+
+def test_history_is_encapsulated():
+    calculator = Calculator()
+
+    assert not hasattr(calculator, "history")
+    assert hasattr(calculator, "_history")
