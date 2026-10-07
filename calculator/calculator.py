@@ -1,8 +1,11 @@
 class Calculator:
     def __init__(self):
-        self.history = []
+        self._history = []
 
     def calculate(self, operation):
         result = operation.execute()
-        self.history.append(operation)
+        self._history.append(operation)
         return result
+
+    def get_history(self):
+        return self._history
