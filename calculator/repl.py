@@ -13,22 +13,28 @@ def run():
             break
 
         if command == "add":
-            first = float(input("First number: "))
-            second = float(input("Second number: "))
+            try:
+                first = float(input("First number: "))
+                second = float(input("Second number: "))
 
-            operation = Add(first, second)
-            result = calculator.calculate(operation)
+                operation = Add(first, second)
+                result = calculator.calculate(operation)
 
-            print(result)
+                print(result)
+            except ValueError:
+                print("Please enter numbers only.")
 
         if command == "subtract":
-            first = float(input("First number: "))
-            second = float(input("Second number: "))
+            try:
+                first = float(input("First number: "))
+                second = float(input("Second number: "))
 
-            operation = Subtract(first, second)
-            result = calculator.calculate(operation)
+                operation = Subtract(first, second)
+                result = calculator.calculate(operation)
 
-            print(result)
+                print(result)
+            except ValueError:
+                print("Please enter numbers only.")
 
         if command == "history":
             for operation in calculator.get_history():

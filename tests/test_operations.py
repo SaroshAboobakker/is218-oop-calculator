@@ -49,3 +49,8 @@ def test_history_is_encapsulated():
 
     assert not hasattr(calculator, "history")
     assert hasattr(calculator, "_history")
+
+def test_calculator_history_starts_empty():
+    calculator = Calculator()
+
+    assert calculator.get_history() == []
