@@ -1,4 +1,4 @@
-from calculator.operations import Add, Subtract
+from calculator.operations import Add, Subtract, Operation
 from calculator.calculator import Calculator
 
 
@@ -54,3 +54,12 @@ def test_calculator_history_starts_empty():
     calculator = Calculator()
 
     assert calculator.get_history() == []
+
+def test_operation_execute_not_implemented():
+    operation = Operation()
+
+    try:
+        operation.execute()
+        assert False
+    except NotImplementedError:
+        assert True
