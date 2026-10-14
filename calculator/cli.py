@@ -1,5 +1,5 @@
 from calculator.operations import Operations
-from calculator.calculation import Calculation
+from calculator.calculation import ArithmeticCalculation
 from calculator.commands import CalculateCommand, HistoryCommand
 
 
@@ -54,7 +54,7 @@ def run():
                 continue
 
             try:
-                calculation = Calculation.create(
+                calculation = ArithmeticCalculation.create(
                     a, b, strategies[command_name]
                 )
                 result = CalculateCommand(calculation, history).execute()

@@ -9,7 +9,7 @@ class Calculation(ABC):
 
     @classmethod
     def create(cls, a, b, operation):
-        return ArithmeticCalculation(a, b, operation)
+        return cls(a, b, operation)
 
     @abstractmethod
     def execute(self):  # pragma: no cover

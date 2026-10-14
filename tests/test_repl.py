@@ -110,9 +110,9 @@ def test_end_of_file(monkeypatch):
 
 
 def test_calculation_factory():
-    from calculator.calculation import Calculation
+    from calculator.calculation import Calculation, ArithmeticCalculation
 
-    calculation = Calculation.create(5, 3, lambda a, b: a + b)
+    calculation = ArithmeticCalculation.create(5, 3, lambda a, b: a + b)
 
     assert calculation.execute() == 8
 
@@ -128,7 +128,7 @@ def test_main_import_does_not_run(monkeypatch):
     runpy.run_module("calculator.__main__", run_name="calculator.__main__")
 def test_calculation_is_abstract():
     import pytest
-    from calculator.calculation import Calculation
+    from calculator.calculation import Calculation, ArithmeticCalculation
 
     with pytest.raises(TypeError):
         Calculation(5, 3, lambda a, b: a + b)
