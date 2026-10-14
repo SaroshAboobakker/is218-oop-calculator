@@ -1,65 +1,32 @@
-from calculator.operations import Add, Subtract, Operation
-from calculator.calculator import Calculator
+import pytest
+
+from calculator.operations import Operations
 
 
 def test_add():
-
-    addition = Add(10, 5)
-
-    assert addition.execute() == 15
+    assert Operations.add(5, 3) == 8
 
 
 def test_add_negative_numbers():
-
-    addition = Add(-10, -5)
-
-    assert addition.execute() == -15
+    assert Operations.add(-5, -3) == -8
 
 
 def test_subtract():
-
-    subtraction = Subtract(10, 5)
-
-    assert subtraction.execute() == 5
+    assert Operations.subtract(5, 3) == 2
 
 
-def test_calculator_history():
-
-    calculator = Calculator()
-    addition = Add(10, 5)
-
-    assert calculator.calculate(addition) == 15
-    assert calculator.get_history() == [addition]
+def test_multiply():
+    assert Operations.multiply(5, 3) == 15
 
 
-def test_calculator_history_multiple():
+def test_divide():
+    assert Operations.divide(6, 3) == 2
 
-    calculator = Calculator()
 
-    addition = Add(10, 5)
-    subtraction = Subtract(10, 3)
+def test_divide_decimal():
+    assert Operations.divide(5, 3) == pytest.approx(1.6666666667)
 
-    calculator.calculate(addition)
-    calculator.calculate(subtraction)
 
-    assert calculator.get_history() == [addition, subtraction]
-
-def test_history_is_encapsulated():
-    calculator = Calculator()
-
-    assert not hasattr(calculator, "history")
-    assert hasattr(calculator, "_history")
-
-def test_calculator_history_starts_empty():
-    calculator = Calculator()
-
-    assert calculator.get_history() == []
-
-def test_operation_execute_not_implemented():
-    operation = Operation()
-
-    try:
-        operation.execute()
-        assert False
-    except NotImplementedError:
-        assert True
+def test_divide_by_zero():
+    with pytest.raises(ValueError, match="Cannot divide by zero"):
+        Operations.divide(5, 0)

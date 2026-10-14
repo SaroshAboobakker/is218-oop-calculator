@@ -1,5 +1,4 @@
 name: Tests
-
 on:
   push:
   pull_request:
@@ -7,7 +6,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,8 +18,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest pytest-cov
+          pip install -r requirements.txt
 
-      - name: Run tests and coverage
+      - name: Run tests with 100% coverage required
         run: |
-          pytest --cov=calculator --cov-branch --cov-report=term-missing
+          python -m pytest --cov=calculator --cov-report=term-missing --cov-fail-under=100
