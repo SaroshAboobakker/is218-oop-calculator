@@ -11,6 +11,7 @@ class Calculation(ABC):
     def create(cls, a, b, operation):
         return cls(a, b, operation)
 
+    # This abstract placeholder has no implementation; subclasses provide execute.
     @abstractmethod
     def execute(self):  # pragma: no cover
         pass
